@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "ray-trace"
+version = "1.0.0"
+package-mode = false
+description = "A production-grade Python/Playwright test automation framework as a portfolio showcase."
+authors = ["DevMiguelPinheiro <dev@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+playwright = "^1.44"
+pytest = "^8.2"
+pytest-asyncio = "^0.23"
+pytest-playwright = "^0.5"
+pytest-xdist = "^3.6"
+pytest-html = "^4.1"
+allure-pytest = "^2.13"
+python-dotenv = "^1.0"
+pydantic-settings = "^2.2"
+Pillow = "^10.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4"
+ruff = "^0.4"
+mypy = "^1.10"
+pre-commit = "^3.7"
+pytest-cov = "^5.0"
+pytest-rerunfailures = "^12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --tb=short -v --screenshot=only-on-failure --video=retain-on-failure --tracing=retain-on-failure"
+markers = [
+    "smoke: smoke test suite",
+    "regression: regression test suite",
+    "visual: visual regression test suite",
+    "network: network/API failure test suite",
+    "slow: slow running test",
+    "critical: critical business logic test",
+]
+asyncio_mode = "auto"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[[tool.mypy.overrides]]
+module = ["pages.*"]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = ["utils.*"]
+ignore_errors = true

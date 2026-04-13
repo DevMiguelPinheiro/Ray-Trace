@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  Ray-Trace:
+    build:
+      context: .
+      target: test
+    container_name: ray-trace-tests
+    environment:
+      APP_ENV: staging
+      BASE_URL: https://www.saucedemo.com
+      HEADLESS: "true"
+      VIDEO_MODE: "retain-on-failure"
+      TRACE_MODE: "retain-on-failure"
+    volumes:
+      - ./test-results:/app/test-results
+      - ./allure-results:/app/allure-results
+      - ./.auth:/app/.auth
+    command: ["-m", "smoke", "--alluredir=allure-results", "-v"]
+    working_dir: /app

@@ -1,0 +1,44 @@
+# Environment variables
+.env
+.env.local
+
+# Poetry
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test artifacts
+test-results/
+.auth/
+allure-results/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Reports
+reports/
+allure-report/
+specs.md
+
+# OS
+.DS_Store
+Thumbs.db
