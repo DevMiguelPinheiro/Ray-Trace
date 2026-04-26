@@ -34,7 +34,7 @@ A production-grade Python/Playwright test automation framework demonstrating ent
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url> && cd ray-trace
+   git clone && cd ray-trace
    ```
 
 2. **Install Poetry:**
